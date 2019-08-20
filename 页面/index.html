@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+你看到的这个页面是首页
+</body>
+<script>
+//////////////////////////////////////////////////////////////////////////////
+    /* // 跨域
+    $.ajax({
+        url:"http://localhost:8888/a",
+        type:"GET",
+        success:function(result){
+            console.log(result);
+        }});*/
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+    /*// ajax利用jsonp解决跨域
+    $.ajax({
+        url:"http://localhost:8888/b",
+        type:"GET",
+        dataType: "jsonp",
+        jsonp: "callback123",
+        data:{
+            userId:"123",
+            name:"linjiad",
+        },
+        success:function(result){
+            console.log(result);
+        }});*/
+
+//////////////////////////////////////////////////////////////////////////////
+
+    /*// 原生利用jsonp解决跨域
+    // 添加script标签
+    function addScript(url){
+        // 创建一个script标签
+        var scpt = document.createElement('script');
+        // 给script标签添加src属性
+        scpt.src = url;
+        // 给script添加id方便以后删除
+        scpt.id = "linshi";
+        // 把script标签放到dom元素中
+        document.body.appendChild(scpt);
+    }
+    // script标签中的方法,获取返回值的方法
+    function linjiad(dt){
+        // 获取刚才创建的script标签
+        const script = document.getElementById("linshi");
+        // 删除刚才创建的script标签
+        // document.body.removeChild(script);
+        console.log(dt)
+    }
+    // 页面加载完成后调用添加script标签方法
+    window.onload=function(){
+         addScript('http://localhost:8888/b?callback123=linjiad&userId=123&name=linjiad')
+        // 添加方法为
+        //<script src = 'http://localhost:8888/b?callback123=linjiad&userId=123&name=linjiad' />
+        // 相当于添加方法为
+        // <script src = linjiad({"callback123":"linjiad","userId":"123","name":"linjiad"}) />
+    }*/
+
+//////////////////////////////////////////////////////////////////////////////
+
+    // 利用header解决跨域（简单请求）
+
+    /*$.ajax({
+        url:"http://localhost:8888/c",
+        type:"GET",
+        data:{
+            userId:"123",
+            name:"linjiad",
+        },
+        success:function(result){
+            console.log(result);
+        }});*/
+
+//////////////////////////////////////////////////////////////////////////////
+
+// 利用header解决跨域（复杂请求）
+
+    /*$.ajax({
+        url:"http://localhost:8888/d",
+        type:"DELETE",
+        headers:{
+            "Content-Type":"application/json",
+            Accept:"application/json"
+        },
+        // 简单请求的请求头
+        /!*headers:{
+            "Content-Type":"text/plain",
+            Accept:"application/json"
+        },*!/
+        data:JSON.stringify({name:"linjiad"}),
+        success:function(result){
+            console.log(result);
+        }});*/
+
+//////////////////////////////////////////////////////////////////////////////
+
+// 处理cookie
+
+        /*$.ajax({
+            url:"http://localhost:8888/f",
+            type:"GET",
+            // 添加传输cookie
+            xhrFields:{
+                withCredentials:true
+            },
+            headers:{
+                "Content-Type":"application/json",
+                Accept:"application/json",
+                // 自定义一个请求头
+                "x-header":"aaa"
+            },
+            data:JSON.stringify({name:"linjiad"}),
+            success:function(result){
+                console.log(result);
+            }});*/
+
+//////////////////////////////////////////////////////////////////////////////
+
+// nginx配置跨域
+
+        $.ajax({
+            url:"http://localhost:8083/g",
+            type:"GET",
+            // 添加传输cookie
+            xhrFields:{
+                withCredentials:true
+            },
+            headers:{
+                "Content-Type":"application/json",
+                Accept:"application/json",
+                // 自定义一个请求头
+                "x-header":"aaa"
+            },
+            data:JSON.stringify({name:"linjiad"}),
+            success:function(result){
+                console.log(result);
+            }});
+</script>
+</html>
