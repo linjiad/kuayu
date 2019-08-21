@@ -36,7 +36,7 @@ var server=http.createServer(function(req,res){
                 res.setHeader('Access-Control-Allow-Origin', '*');
                 res.setHeader('Access-Control-Allow-Methods', '*');
                 // 设置允许跨域的请求头
-                res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+                res.setHeader('Access-Control-Allow-Headers', 'linjiad');
                 // 设置自检查的最大时间
                 res.setHeader('Access-Control-Max-Age', '3600');
                 res.write(`返回了`);
@@ -44,6 +44,8 @@ var server=http.createServer(function(req,res){
             }
             // 处理cookie
             else if (pathname === "/f"){
+                // 查看cookie
+                console.log(req.headers.cookie);
                 // 获取客户端地址
                 var origin = req.headers.origin;
                 // 设置可以跨域的ip地址
